@@ -75,7 +75,7 @@ function addRank(CR, side, rank, times) {
  Challenge Rank 20+: Party's PL + 5
  */
 function NPCRank(ePL, PL) {
-    if (ePL == PL - 4) {
+    if (ePL <= PL - 4) {
         return [1, 1];
     } else if (ePL <= PL - 2) {
         return [2, 2];
@@ -133,11 +133,11 @@ function minionRank(ePL, PL, num) {
 
 function danger(CR, players) {
     const DR = Math.floor(CR / players);
+    // Allies outweighing enemies make the rank negative.
+    if (DR <= 2) {
+        return "No Danger (" + DR + ")";
+    }
     switch (DR) {
-        case 0:
-        case 1:
-        case 2:
-            return "No Danger (" + DR + ")";
         case 3:
             return "Minimal Danger (" + DR + ")";
         case 4:
