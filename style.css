@@ -6,148 +6,175 @@
     font-family: body;
     src: url('fonts/myriad-pro-cufonfonts/MYRIADPRO-REGULAR.OTF');
 }
-html{
-    height: 100%;
-    overflow-y: hidden;
+*, *::before, *::after {
+    box-sizing: border-box;
 }
-body{
-    color: aliceblue;/*darkgreen;/*lime;/*maroon;/*#2b0062;*/
-    font-family: 'body';
-    height: 100%;
-    background-image: url(images/SSC_bg.png);
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    min-height: 100dvh;
+    margin: 0;
+    padding: 0 8px;
+    color: aliceblue;
+    font-family: body, sans-serif;
+    background: black url(images/SSC_bg.png) no-repeat fixed;
     background-size: 100% 100%;
-    background-repeat: no-repeat;
-    margin-top: 0;
-    margin-bottom: 0;
 }
-h1,h2,h3,h4,h5,h6 {
-    font-family: 'header';
+h1, .heading {
+    font-family: header, sans-serif;
     font-style: italic;
 }
-#header{
-    height: 75px;
+.heading {
+    font-size: 1.17em;
+    font-weight: bold;
 }
-#source,#rapid{
-    color: aliceblue;/*darkgreen;/*lime;/*#3b0072;*/
-    /*text-align: center;
-    /*margin-left: 28%;*/
+input[type=number] {
+    width: 4.5em;
 }
-#rapid{
+
+#header {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px 16px;
+    padding: 12px 0 10px;
+}
+#logo img {
     display: block;
-}
-#header p{
-    cursor: help;
-}
-#header>p{
-    margin-left: 40%;
-}
-#header h2{
-    display: inline-block;
-    vertical-align: middle;
-}
-#header #banner,#header #logo{
-    display: inline;
-    margin-left: 0px;
-}
-#header #banner{
-    float: right;
     height: 75px;
 }
-#banner img{
-    height: 75px;
+#header h1 {
+    margin: 0;
+    font-size: 1.5em;
 }
-#logo img{
-    height: 75px;
-    float: left;
-}
-#side{
-    float: right;
-    width: 40%;
+#side {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 2px;
+    margin-left: auto;
     text-align: right;
 }
-#guide{
+#side a, #guide {
+    color: aliceblue;
+}
+#guide {
+    padding: 0;
+    border: none;
+    background: none;
+    font: inherit;
+    text-align: inherit;
+    text-decoration: underline;
     cursor: help;
-    color: aliceblue;/*darkgreen;/*lime;/*indigo;*/
-    /*text-align: center;
-    margin-right: 10%;*/
-    display: block;
 }
-#popup{
+#popup {
     position: absolute;
-    display: block;
+    top: 100%;
+    left: 50%;
     z-index: 10;
-    background-color: aliceblue;
-    float: left;
     width: 60%;
+    padding: 0 16px;
+    transform: translateX(-50%);
+    background-color: aliceblue;
+    color: indigo;
     opacity: .95;
-    transform: translateX(-65%);
     text-align: center;
+    cursor: pointer;
 }
-#holder{
-    border-style: outset;
-    border-width: 2px;
-    border-color: indigo;/*lime/*indigo*/;
-    width:100%;
-    height:6%;
-    display: inline-flex;
-    position: relative;
-    background: aliceblue;/*linear-gradient(to right,
-        aliceblue 0%,
-        transparent calc(50% - 0.81px),
-        darkgreen/*lime indigo*/ /*calc(50% - 0.8px),
-        darkgreen/*lime indigo*/ /*calc(50% + 0.8px),
-        transparent calc(50% + 0.81px),
-        aliceblue 100%);*/
-}
-#settings,#results{
-    width: 50%;
-    display: relative;
-}
-#settings input{
-    display: inline;
-    width: 30px;
-}
-#settings h3{
-    display: inline;
-    margin: 0px;
-}
-#results h3,#results p,.NPC *,.minion *{
-    display: inline;
-}
-input.PL,input.number{
-    width:30px;
-}
-#composition{
-    border-left-style: outset;
-    border-top-style: none;
-    border-width: 2px;
-    border-color: indigo;/*lime/*indigo*/;
-    width: 100%;
-    min-height: 81%;
-    max-height: 81%;
+
+main {
     display: flex;
-    margin-right: 0px;
-    position: relative;
-    background: linear-gradient(to bottom,
-        aliceblue 0%,
-        transparent 100%);/*calc(50% - 0.81px),
-        darkgreen/*lime indigo*/ /*calc(50% - 0.8px),
-        darkgreen/*lime indigo*/ /*calc(50% + 0.8px),
-        transparent calc(50% + 0.81px),*/
-        /*aliceblue 100%);*/
+    flex: 1;
+    flex-direction: column;
 }
-#NPCBlock,#minionBlock{
-    width: 50%;
-    height: 20%;
-    max-height: 10%;
-    top:0px;
+#holder {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 16px;
+    padding: 8px;
+    border: 2px outset indigo;
+    background: aliceblue;
+    color: indigo;
 }
-#NPC,#minion{
-    overflow-y: auto;
+#settings, #results {
+    display: flex;
+    flex: 1 1 300px;
+    flex-direction: column;
+    gap: 6px;
 }
-p{
-    color: indigo;/*darkgreen;*/
+#settings input {
+    margin-left: 4px;
 }
-#holder h3{
-    color: indigo;/*darkgreen;*/
+#composition {
+    display: flex;
+    flex: 1;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 12px 8px 16px;
+    border-left: 2px outset indigo;
+    background: linear-gradient(to bottom, aliceblue 0%, transparent 100%);
+}
+#NPCBlock, #minionBlock {
+    flex: 1 1 420px;
+    min-width: 0;
+}
+.toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 10px;
+}
+.NPC, .minion, .force {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px 10px;
+    margin-bottom: 6px;
+    padding: 4px 8px;
+    border: 1px solid rgba(75, 0, 130, .25);
+    border-radius: 4px;
+    background: rgba(240, 248, 255, .85);
+    color: indigo;
+}
+.NPC label, .minion label, .force label {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    white-space: nowrap;
+}
+.name {
+    width: 9em;
+}
+
+footer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 4px 8px;
+    padding: 12px 0 16px;
+}
+footer ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 16px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+footer a {
+    color: aliceblue;
+}
+
+@media (max-width: 700px) {
+    #side {
+        align-items: flex-start;
+        margin-left: 0;
+        text-align: left;
+    }
+    #popup {
+        width: 100%;
+    }
 }

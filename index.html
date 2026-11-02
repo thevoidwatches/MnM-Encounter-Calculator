@@ -1,82 +1,118 @@
 <!DOCTYPE html>
-<html>
-<head lang="en">
+<html lang="en">
+<head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Mutants & Masterminds Encounter Calculator</title>
-    <link rel="stylesheet" href="style.css"/>
-    <script src="script.js"></script>
-    <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
-    <link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="76x76" href="/apple-icon-76x76.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="/apple-icon-114x114.png">
-    <link rel="apple-touch-icon" sizes="120x120" href="/apple-icon-120x120.png">
-    <link rel="apple-touch-icon" sizes="144x144" href="/apple-icon-144x144.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="/apple-icon-152x152.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png">
-    <link rel="icon" type="image/png" sizes="192x192"  href="/android-icon-192x192.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="manifest" href="/manifest.json">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+    <link rel="apple-touch-icon" sizes="57x57" href="images/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="images/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="images/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="images/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="images/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="images/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="images/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="images/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+    <link rel="manifest" href="images/manifest.json">
     <meta name="msapplication-TileColor" content="#ffffff">
-    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+    <meta name="msapplication-TileImage" content="images/ms-icon-144x144.png">
+    <meta name="msapplication-config" content="images/browserconfig.xml">
     <meta name="theme-color" content="#ffffff">
 </head>
-<body onload="main()">
-    <div id="header">
-        <h2>Mutants & Masterminds Encounter Calculator</h2>
+<body>
+    <header id="header">
         <a id="logo" href="https://scc.miraheze.org/wiki/Main_Page">
             <img alt="Join the Starlight City Champions! A community roleplaying group for Mutants and Masterminds!"
                  src="images/SSC.png">
         </a>
-        <div id="side">
-            <a id="source" href="https://fantasy.geographic.net/Challenge">Based on the guidelines
-                proposed by Jackelope King</a>
-            <a id="rapid" href="https://greenronin.com/blog/2020/12/04/boom-with-a-capital-b-rapid-fire-villains/">On
-                Rapid-Fire Villains</a>
-            <u><a id="guide" onclick="toggleTutorial(this)">How to use this calculator</a></u>
+        <h1>Mutants & Masterminds Encounter Calculator</h1>
+        <nav id="side">
+            <a href="https://fantasy.geographic.net/Challenge">Based on the guidelines proposed by Jackelope King</a>
+            <a href="https://greenronin.com/blog/2020/12/04/boom-with-a-capital-b-rapid-fire-villains/">On Rapid-Fire
+                Villains</a>
+            <button type="button" id="guide" aria-expanded="false" aria-controls="popup">How to use this
+                calculator</button>
+        </nav>
+        <div id="popup" hidden>
+            <p>First set the PL of the party and the number of players then use the buttons to add or remove NPCs and
+                minions and set their numbers and PLs. The calculator will calculate the CR and show the danger ranking
+                of the encounter, the danger ranking being more important to play than the challenge ranking.</p>
+            <p>This calculator deviates from the danger ranking scale set out in the original formula. We have found
+                that it doesn't actually hold up well to play with characters who have defenses and offenses at cap for
+                PL, and that it is very common for new players and GMs to make the mistake of not capping those on PCs.
+                We can only assume that the ranking system was made for such groups. That being said, we do include the
+                original scale in brackets following the numerical danger ranking. Furthermore, we have explanations
+                based on how we've found the rankings to translate in play, as well as extending the formula in both
+                directions for NPCs and minions.</p>
+            <p>No Danger: There is no possible way that the PCs could be seriously threatened.<br>
+                Minimal Danger: The PCs have almost no chance of being defeated.<br>
+                Modest Danger: The PCs stand to suffer some injuries if they're not careful.<br>
+                Significant Danger: The PCs are likely to win the fight, but it will require smart play to come out on
+                top.<br>
+                Serious Danger: The PCs are going up against a real threat and could just as easily win as they could
+                lose, and will need to play smart to win.<br>
+                Severe Danger: The PCs are going to be outmatched, and without very clever gameplay and teamwork,
+                they're more likely than not going to lose.<br>
+                Overwhelming Danger: The PCs are very likely to lose the encounter, and only tremendous luck or playing
+                at the top of their game can see them through.</p>
         </div>
-    </div>
-    <div id="holder">
-        <div id="settings" class="holder">
-            <div>
-                <h3>Power Level:</h3>
-                <input type="number" min="1" value="10" id="PL" onchange="update()">
+    </header>
+    <main>
+        <section id="holder">
+            <div id="settings">
+                <div>
+                    <label class="heading" for="PL">Power Level:</label>
+                    <input type="number" min="1" value="10" id="PL">
+                </div>
+                <div>
+                    <label class="heading" for="size">Number of Players:</label>
+                    <input type="number" min="1" value="4" id="size">
+                </div>
             </div>
-            <div>
-                <h3>Number of Players:</h3>
-                <input type="number" min="1" value="4" id="size" onchange="update()">
+            <div id="results" aria-live="polite">
+                <div id="CR">
+                    <span class="heading">Challenge Rank:</span>
+                    <span id="CRValue">0</span>
+                </div>
+                <div id="diff">
+                    <span class="heading">Difficulty:</span>
+                    <span id="diffValue">No Danger (0)</span>
+                </div>
             </div>
-        </div>
-        <div id="results" class="holder">
-            <div id="CR">
-                <h3>Challenge Rank: </h3>
-                <p>0</p>
+        </section>
+        <section id="composition">
+            <div id="NPCBlock">
+                <div class="toolbar">
+                    <button type="button" id="addNPC" onclick="add('NPC')">Add NPC</button>
+                    <button type="button" id="clearNPC" onclick="clearList('NPC')">Clear NPCs</button>
+                </div>
+                <div id="NPC"></div>
             </div>
-            <div id="diff">
-                <h3>Difficulty: </h3>
+            <div id="minionBlock">
+                <div class="toolbar">
+                    <button type="button" id="addMin" onclick="add('minion')">Add Minion</button>
+                    <button type="button" id="clearMinion" onclick="clearList('minion')">Clear Minions</button>
+                    <button type="button" id="addForce" onclick="add('force')">Add Force</button>
+                    <button type="button" id="clearForce" onclick="clearList('force')">Clear Forces</button>
+                    <button type="button" id="clearBoth" onclick="clearList('minion', 'force')">Clear Minions &
+                        Forces</button>
+                </div>
+                <div id="minion"></div>
+                <div id="force"></div>
             </div>
-        </div>
-    </div>
-    <div id="composition" class="holder">
-        <div id="NPCBlock">
-            <button type="button" id="addNPC" onclick="add('NPC')">Add NPC</button>
-            <button type="button" id="clearNPC" onclick="document.getElementById('NPC').innerHTML=''">Clear
-                NPCs</button>
-            <div id="NPC"></div>
-        </div>
-        <div id="minionBlock">
-            <button type="button" id="addMin" onclick="add('minion')">Add Minion</button>
-            <button type="button" id="clearMinion" onclick="document.getElementById('minion').innerHTML=''">Clear Minions</button>
-            <button type="button" id="addForce" onclick="add('force')">Add Force</button>
-            <button type="button" id="clearForce" onclick="document.getElementById('force').innerHTML=''">Clear Forces</button>
-            <button type="button" id="clearBoth"
-                    onclick="document.getElementById('minion').innerHTML='';document.getElementById('force').innerHTML=''">Clear
-                Forces</button>
-            <div id="minion"></div>
-            <div id="force"></div>
-        </div>
-    </div>
+        </section>
+    </main>
+    <footer>
+        <span>Other tools from thevoidwatches:</span>
+        <ul>
+            <li><a href="https://thevoidwatches.github.io/Exalted-Name-Generator/">Exalted Name Generator</a></li>
+        </ul>
+    </footer>
 </body>
 </html>
